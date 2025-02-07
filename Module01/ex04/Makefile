@@ -1,10 +1,10 @@
 NAME = Brain
 
-CC = g++
+CC = c++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-SRC = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
+SRC = main.cpp
 
 OBJ	= $(SRC:.c=.o)
 

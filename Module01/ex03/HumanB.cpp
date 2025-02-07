@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 13:23:18 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/06 16:24:53 by nandrian         ###   ########.fr       */
+/*   Created: 2025/02/06 10:55:20 by nandrian          #+#    #+#             */
+/*   Updated: 2025/02/06 16:42:43 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Weapon.hpp"
+#include "HumanB.hpp"
 
-Weapon::Weapon(std::string input)
+HumanB::HumanB(std::string input)
 {
-	type = input;
+	weaponB = NULL;
+	name = input;
+	return ;
 }
 
-Weapon::~Weapon()
+HumanB::~HumanB()
 {
+	return ;
 }
 
-void	Weapon::setType(std::string input)
+void	HumanB::setWeapon(Weapon &weapons)
 {
-	type = input;
+	weaponB = &weapons;
+	return ;
 }
 
-std::string&	Weapon::getType(void)
+void	HumanB::attack(void)
 {
-	std::string&	out = type;
-
-	return (out);
+	if (weaponB != NULL)
+		std::cout << name << " attacks with their " << weaponB->getType() << std::endl;
+	return ;
 }
