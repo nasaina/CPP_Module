@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:11:49 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/24 16:25:50 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:14:19 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FIXED_HPP
 
 #include <iostream>
-# include <math.h>
+# include <cmath>
 
 class Fixed
 {
