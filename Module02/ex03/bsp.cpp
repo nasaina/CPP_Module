@@ -6,13 +6,11 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:17:08 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/25 18:09:16 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/26 08:02:46 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
-
-std::ostream	&operator<<(std::ostream &os, const Fixed &other);
 
 Fixed	onePoint(Point const a, Point const b, Point const c)
 {
@@ -20,7 +18,7 @@ Fixed	onePoint(Point const a, Point const b, Point const c)
 	Fixed	sign(-1);
 	Fixed	tmp2;
 	Fixed	tmp3;
-	Fixed	div(1 / 2);
+	Fixed	div(0.5f);
 	Fixed	result;
 
 	tmp1 = a.getCoordx() * (b.getCoordy() - c.getCoordy());
@@ -38,10 +36,6 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point)
 	Fixed pab = onePoint(point, a, b);
 	Fixed pbc = onePoint(point, b, c);
 	Fixed pca = onePoint(point, c, a);
-	std::cout << "abc =" << abc;
-	std::cout << "pab =" << pab;
-	std::cout << "pbc =" << pbc;
-	std::cout << "pca =" << pca;
 	if (abc == (pab + pbc + pca))
 		return (true);
 	return (false);

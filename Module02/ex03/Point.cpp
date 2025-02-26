@@ -6,11 +6,13 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:17 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/25 17:37:16 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/26 08:25:09 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &other);
 
 Point::Point()
 {
@@ -28,14 +30,14 @@ Point::Point(const float otherx, const float othery)
 	Fixed tmpx(otherx);
 	Fixed tmpy(othery);
 
-	(Fixed)this->x = tmpx;
-	(Fixed)this->y = tmpy;
+	this->x = tmpx;
+	this->y = tmpy;
 }
 
 Point &Point::operator=(const Point &other)
 {
-	(Fixed)this->x = other.x;
-	(Fixed)this->y = other.y;
+	this->x = other.x;
+	this->y = other.y;
 	return (*this);
 }
 
@@ -54,6 +56,11 @@ Fixed	Point::getCoordx(void) const
 Fixed	Point::getCoordy(void) const
 {
 	return (y);
+}
+
+void	Point::print(void) const
+{
+	std::cout << "(" << x << ", " << y << ")";
 }
 
 Point::~Point()

@@ -6,13 +6,36 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:39 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/25 18:04:39 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/26 08:33:30 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-bool	bsp( Point const a, Point const b, Point const c, Point const point);
+bool			bsp( Point const a, Point const b, Point const c, Point const point );
+std::ostream	&operator<<(std::ostream &os, const Fixed &other);
+
+void			printTriangle( Point const a, Point const b, Point const c)
+{
+	std::cout << "/* **** triangle **** */" << std::endl;
+	std::cout << "Point a";
+	a.print();
+	std::cout << std::endl << "Point b";
+	b.print();
+	std::cout << std::endl << "Point c";
+	c.print();
+}
+
+void			checkBSP( Point const a, Point const b, Point const c, Point const point )
+{
+	std::cout << std::endl << "/* ****** point ****** */" << std::endl;
+	std::cout << "Point point";
+	point.print();
+	if (bsp(a, b, c, point))
+		std::cout << " is inside of the triangle"  << std::endl;
+	else
+		std::cout << " is outside of the triangle" << std::endl;
+}
 
 int	main(void)
 {
@@ -22,10 +45,11 @@ int	main(void)
 
 	Point point(2, 2);
 	Point point2(6, 5);
+	Point point3(-1, 1);
 
-	if (bsp(a, b, c, point))
-		std::cout << "in\n";
-	else
-		std::cout << "out\n";
+	printTriangle(a, b, c);
+	checkBSP(a, b, c, point);
+	checkBSP(a, b, c, point2);
+	checkBSP(a, b, c, point3);
 	return (0);
 }
