@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:01 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/26 15:36:50 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:28:41 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,23 @@ int	main(void)
 	ClapTrap	carter;
 
 	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	bob.attack("carter");
-	carter.takeDamage(5);
-	carter.beRepaired(10);
-	bob.beRepaired(4);
+	bob.takeDamage(10);
+	std::cout << bob.getHitPoint() << std::endl;
+	bob.beRepaired(10);
 	std::cout << bob.getEnergyPoint() << std::endl;
-	std::cout << carter.getHitPoint() << std::endl;
+	bob.attack("carter");
+	bob.beRepaired(10);
+	std::cout << bob.getEnergyPoint() << std::endl;
+	bob.attack("carter");
+	bob.beRepaired(10);
+	std::cout << bob.getEnergyPoint() << std::endl;
+	bob.attack("carter");
+	bob.beRepaired(10);
+	std::cout << bob.getEnergyPoint() << std::endl;
+	bob.attack("carter");
+	bob.beRepaired(10);
+	std::cout << bob.getEnergyPoint() << std::endl;
+	bob.attack("carter");
+	bob.beRepaired(10);
+	std::cout << bob.getEnergyPoint() << std::endl;
 }

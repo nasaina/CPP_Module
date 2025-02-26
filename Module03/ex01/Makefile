@@ -1,10 +1,10 @@
-NAME = Bsp
+NAME = ScavTrap
 
 CC = c++
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-SRC = Fixed.cpp bsp.cpp Point.cpp main.cpp
+SRC = ClapTrap.cpp main.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
