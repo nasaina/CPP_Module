@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 17:39:27 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/04 12:35:39 by nandrian         ###   ########.fr       */
+/*   Created: 2025/03/04 08:39:41 by nandrian          #+#    #+#             */
+/*   Updated: 2025/03/04 13:10:38 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-int	main(void)
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
+
+class DiamondTrap : public FragTrap, public ScavTrap
 {
-	FragTrap	bob("bob");
+	private:
+		std::string	_name;
+	public:
+		DiamondTrap(void);
+		DiamondTrap(const std::string name);
+		void	attack(const std::string &target);
+		~DiamondTrap();
+};
 
-	bob.attack("serge");
-	std::cout << bob.getName() << std::endl;
-	std::cout << bob.getDamage() << std::endl;
-	bob.highFiveGuys();
-}
+#endif

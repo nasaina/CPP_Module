@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:37:04 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/04 07:50:43 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/04 12:35:23 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,6 @@ ClapTrap::ClapTrap(std::string name)
 	_energypoint = 10;
 	_damage = 0;
 	return ;
-}
-
-void	ClapTrap::setHit(const int hit)
-{
-	_hitpoint = hit;
-}
-
-void	ClapTrap::setEnergy(const int energy)
-{
-	_energypoint = energy;
-}
-
-void	ClapTrap::setDamage(const int damage)
-{
-	_damage = damage;
-}
-
-void	ClapTrap::setName(const std::string name)
-{
-	_name = name;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -101,17 +81,17 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	return ;
 }
 
-int			ClapTrap::getHitPoint(void) const
+int			ClapTrap::getHit(void) const
 {
 	return (_hitpoint);
 }
 
-int			ClapTrap::getEnergyPoint(void) const
+int			ClapTrap::getEnergy(void) const
 {
 	return (_energypoint);
 }
 
-int			ClapTrap::getdamage(void) const
+int			ClapTrap::getDamage(void) const
 {
 	return (_damage);
 }

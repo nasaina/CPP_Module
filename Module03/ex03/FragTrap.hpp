@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 17:39:27 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/04 12:35:39 by nandrian         ###   ########.fr       */
+/*   Created: 2025/02/26 17:05:18 by nandrian          #+#    #+#             */
+/*   Updated: 2025/03/04 12:40:01 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class FragTrap : virtual public ClapTrap
 {
-	FragTrap	bob("bob");
+	private:
+		
+	public:
+		FragTrap(void);
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &other);
+		FragTrap &operator=(const FragTrap &other);
+		void 	highFiveGuys(void);
+		~FragTrap(void);
+};
 
-	bob.attack("serge");
-	std::cout << bob.getName() << std::endl;
-	std::cout << bob.getDamage() << std::endl;
-	bob.highFiveGuys();
-}
+#endif
