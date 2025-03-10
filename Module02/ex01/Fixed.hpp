@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:11:49 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/25 11:14:19 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:06:33 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	Fixed(const Fixed &other);
 	Fixed	&operator=(const Fixed &other);
 	~Fixed();
+
 	float toFloat( void ) const;
 	int toInt( void ) const;
 	int	getValue(void) const;

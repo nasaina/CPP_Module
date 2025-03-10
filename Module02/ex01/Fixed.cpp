@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:27:58 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/25 13:15:29 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:05:51 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ Fixed::Fixed(void)
 Fixed::Fixed(int const raw)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_value = raw * (pow(2, 8));
+	this->_value = raw * (pow(2, _bits));
 	return ;
 }
 
 Fixed::Fixed(float const raw)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_value = (int)roundf(raw * (pow(2, 8)));
+	this->_value = (int)roundf(raw * (pow(2, _bits)));
 	return ;
 }
 
