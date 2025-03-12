@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 08:47:22 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/05 09:31:33 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/16 15:02:41 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Zombie
 	public:
 		Zombie();
 		~Zombie();
-		void	announce(void);
 		void	setName(std::string input);
+		void	announce(void);
 };
 
 #endif

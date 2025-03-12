@@ -1,12 +1,12 @@
-NAME = Zombie
+NAME = harlFilter
 
 CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-OBJ	= $(SRC:.cpp=.o)
+SRC = Harl.cpp main.cpp
 
-SRC = Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
+OBJ	= $(SRC:.cpp=.o)
 
 all : $(NAME)
 

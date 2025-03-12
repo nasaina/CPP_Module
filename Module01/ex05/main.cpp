@@ -6,20 +6,21 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:34:40 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/10 11:19:45 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/12 08:14:49 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Harl.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	void	(Harl::* complainCaller)(std::string) = &Harl::complain;
 	Harl	harley;
 
-	(harley.*complainCaller) ("debug");
-	(harley.*complainCaller) ("warning");
-	(harley.*complainCaller) ("info");
-	(harley.*complainCaller) ("error");
+	if (ac != 2)
+	{
+		std::cout << "Use ./harlFilter <your complain message>" << std::endl;
+		return (1);
+	}
+	harley.complain(av[1]);
+	return (0);
 }

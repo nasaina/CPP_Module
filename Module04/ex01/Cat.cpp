@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:00:19 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/11 12:56:26 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:50:35 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,18 @@ Cat::Cat(const std::string input) : Animal(input)
 
 Cat::Cat(const Cat &other) : Animal()
 {
-	this->type = other.type;
+	type = other.type;
+	delete brain;
+	brain = new Brain();
+	brain = other.brain;
 }
 
 Cat	&Cat::operator=(const Cat &other)
 {
 	type = other.type;
+	delete brain;
+	brain = new Brain();
+	brain = other.brain;
 	return (*this);
 }
 

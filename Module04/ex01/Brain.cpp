@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:58:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/11 12:59:46 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:48:35 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,21 @@ Brain::Brain()
 Brain::Brain(const Brain &other)
 {
 	delete ideas;
-	ideas = other.ideas;
+	ideas = new std::string[100];
+	for (size_t i = 0; i < 100; i++)
+	{
+		ideas[i] = other.ideas[i];
+	}
 }
 
 Brain &Brain::operator=(const Brain &other)
 {
 	delete [] ideas;
 	ideas = new std::string[100];
-	ideas = other.ideas;
+	for (size_t i = 0; i < 100; i++)
+	{
+		ideas[i] = other.ideas[i];
+	}
 	return (*this);
 }
 

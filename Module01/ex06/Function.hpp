@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Function.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 10:55:20 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/20 09:47:23 by nandrian         ###   ########.fr       */
+/*   Created: 2025/02/10 11:21:05 by nandrian          #+#    #+#             */
+/*   Updated: 2025/03/11 14:28:36 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Weapon.hpp"
-#include "HumanA.hpp"
+#ifndef FUNCTION_HPP
+# define FUNCTION_HPP
 
-HumanA::HumanA(std::string input, Weapon& weapons) : name(input), weaponA(weapons)
-{
-	return ;
-}
+# include <iostream>
+# include "Harl.hpp"
 
-HumanA::~HumanA()
+typedef struct sFunction
 {
-	return ;
-}
+	std::string	Name;
+	void	(Harl::*functions)(void);
+}	Function;
 
-void	HumanA::attack(void)
+typedef enum
 {
-	std::cout << name << " attacks with their " << weaponA.getType() << std::endl;
-}
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR
+}	Type;
+
+#endif

@@ -6,24 +6,37 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:59 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/05 12:38:44 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/12 06:43:27 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+#include <cstdlib>
 
 Zombie	*zombieHorde(int N, std::string name);
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	int		N;
 	Zombie	*zombies;
 
-	N = 6;
-	zombies = zombieHorde(N, "Poutine");
-	for (int i = 0; i < N; i++)
+	if (ac == 3)
 	{
-		zombies[i].announce();
+		N = atoi(av[1]);
+		zombies = zombieHorde(N, av[2]);
+		if (!zombies)
+		{
+			std::cout << "N should be positive" << std::endl;
+			return (1);
+		}
+		for (int i = 0; i < N; i++)
+		{
+			zombies[i].announce();
+		}
+		delete[] zombies;
 	}
-	delete[] zombies;
+	else
+		std::cout << "arguments required : Number of zombies | name of Horde"
+		<< std::endl;
+	return (0);
 }

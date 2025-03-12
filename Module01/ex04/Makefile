@@ -1,12 +1,12 @@
-NAME = Brain
+NAME = File
 
 CC = c++
 
-FLAGS = -Wall -Werror -Wextra -g -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp
 
-OBJ	= $(SRC:.c=.o)
+OBJ	= $(SRC:.cpp=.o)
 
 all : $(NAME)
 
@@ -15,7 +15,7 @@ $(NAME) : $(OBJ)
 	@clear
 	@echo "\n\e[1;91mCompilation successful\e[0m\n"
 
-%.o : %.c
+%.o : %.cpp
 	@$(CC) $(FLAGS) -c $< -o $@
 
 clean	:

@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 10:55:20 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/20 09:47:23 by nandrian         ###   ########.fr       */
+/*   Created: 2025/02/07 14:34:40 by nandrian          #+#    #+#             */
+/*   Updated: 2025/03/12 07:06:06 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Weapon.hpp"
-#include "HumanA.hpp"
+#include "Harl.hpp"
 
-HumanA::HumanA(std::string input, Weapon& weapons) : name(input), weaponA(weapons)
+int	main(int ac, char **av)
 {
-	return ;
-}
+	Harl	harley;
 
-HumanA::~HumanA()
-{
-	return ;
-}
-
-void	HumanA::attack(void)
-{
-	std::cout << name << " attacks with their " << weaponA.getType() << std::endl;
+	if (ac != 2)
+	{
+		std::cout << "Use ./harlFilter <your complain message>" << std::endl;
+		return (1);
+	}
+	harley.complain(av[1]);
+	return (0);
 }

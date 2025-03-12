@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:44:38 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/07 10:57:37 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:37:28 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ std::string	appendStr(std::string content, char **av)
 {
 	size_t		posFind;
 	size_t		posActual = 0;
+	std::string	toReplace(av[2]);
 	std::string	result;
 	std::string	replace = av[3];
 
+	if (!av[2][0])
+		return (content);
 	while (posActual < content.length())
 	{
 		posFind = content.find(av[2], posActual);
@@ -28,7 +31,7 @@ std::string	appendStr(std::string content, char **av)
 		{
 			result.append(content, posActual, posFind - posActual);
 			result.append(replace);
-			posActual = posFind + replace.length();
+			posActual = posFind + toReplace.length();
 		}
 		else
 		{
@@ -74,7 +77,13 @@ int	main(int ac, char **av)
 
 	if (ac == 4)	
 	{
-		getContent(av);
+		std::fstream file(av[1], std::ios::in);
+		if (!file)
+		{
+			std::cout << "File not opened !" << std::endl;
+			return (1);
+		}
+		file.close();
 		std::string	content;
 		filename = av[1] + replace;
 		const	char* str = filename.c_str();

@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:28:15 by nandrian          #+#    #+#             */
-/*   Updated: 2025/02/06 16:42:49 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/02/20 09:49:13 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ class HumanA
 {
 	private:
 		std::string	name;
-		Weapon	*weaponA;
+		Weapon	&weaponA;
 	public:
 		HumanA(std::string input, Weapon& weapons);
-		~HumanA();
+		~HumanA(void);
 		void	attack(void);
-		void	setWeapon(Weapon &weapons);
 };
 
 #endif
