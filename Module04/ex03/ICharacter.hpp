@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:26:33 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/12 08:27:33 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:26:49 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,10 @@ class ICharacter
 		virtual void unequip(int idx) = 0;
 		virtual void use(int idx, ICharacter& target) = 0;
 };
+
+void use(int idx, ICharacter& target)
+{
+
+}
 
 #endif

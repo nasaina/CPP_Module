@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:32:04 by nandrian          #+#    #+#             */
-/*   Updated: 2025/03/12 14:40:12 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:13:19 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,19 @@ class MateriaSource : public IMateriaSource
 
 MateriaSource::MateriaSource() : IMateriaSource()
 {
+	
 }
+
+void MateriaSource::learnMateria(AMateria*)
+{
+
+}
+
+AMateria* MateriaSource::createMateria(std::string const & type)
+{
+
+}
+
 
 MateriaSource::~MateriaSource()
 {
