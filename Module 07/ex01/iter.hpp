@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:17:04 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/07 13:05:28 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/09 07:46:16 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <iostream>
 
-template <typename T> void iter(T *A, int B, void (*F)(T &))
+template <typename T> void iter(const T *A, int B, void (*F)(T &))
 {
-	for (T i = 0; i < B; i++)
-		F(A[i]);
+	T *D = const_cast<T *>(A);
+	for (int i = 0; i < B; i++)
+		F(D[i]);
 }
 
 #endif

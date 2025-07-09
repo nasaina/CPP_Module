@@ -6,26 +6,38 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/09 07:46:38 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/09 09:04:56 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-
-void	up(int &c)
-{
-	c++;
-}
+#include "Array.hpp"
 
 int main( void )
 {
-	int	T[3] = {1, 2, 3};
-
-	::iter(T, 3, up);
-	for (int i = 0; i < 3; i++)
+	try
 	{
-		std::cout << T[i];
+		Array<int> out;
+
+		std::cout << out[0] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 	
+	try
+	{
+		Array<int> out(2);
+
+		out.setElement(89, 1);
+		{
+			Array<int> in(out);
+			std::cout << in[1] << std::endl;
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}	
 	return 0;
 }
