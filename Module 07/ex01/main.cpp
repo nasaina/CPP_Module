@@ -6,13 +6,18 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/09 07:46:38 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:10:17 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-void	up(int &c)
+void	up(const int &c)
+{
+	std::cout << c << '\n';
+}
+
+void	up(int c)
 {
 	c++;
 }
