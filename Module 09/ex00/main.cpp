@@ -6,34 +6,25 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/11 12:52:30 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:40:32 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MutantStack.hpp"
+#include "BitcoinExchange.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	//[...]
-	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
+	(void)av;
+	if (ac == 2)
 	{
-		std::cout << *it << std::endl;
-		++it;
+		BitcoinExchange	data;
+		list			contain;
+		
+		contain = data.getElement();
+		for (list::const_iterator it = contain.begin(); it != contain.end(); ++it) 
+		{
+			std::cout << it->first << " : " << it->second << std::endl;
+		}
 	}
-	std::stack<int> s(mstack);
 	return 0;
 }

@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MutantStack.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/11 12:52:25 by nandrian         ###   ########.fr       */
+/*   Created: 2025/07/11 12:17:55 by nandrian          #+#    #+#             */
+/*   Updated: 2025/07/11 12:19:55 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "MutantStack.hpp"
 
-int main()
+template<typename T> MutantStack<T>::MutantStack()
 {
-	try
-	{
-		Span sp = Span(5);
-		std::vector<int> v(3);
+}
 
-		v[0] = 21;
-		v[1] = 12;
-		v[2] = 43;
-		sp.addNumber(10);
-		sp.addNumber(0);
-		sp.fillRange(v.begin(), v.end());
-		
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
-		return 0;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+template <typename T>
+typename std::deque<T>::iterator	MutantStack<T>::begin()
+{
+	return (this->c.begin());
+}
+
+template <typename T>
+typename std::deque<T>::iterator	MutantStack<T>::end()
+{
+	return (this->c.end());
+}
+
+template<typename T> MutantStack<T>::~MutantStack()
+{
 }
