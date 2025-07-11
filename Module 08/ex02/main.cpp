@@ -6,38 +6,34 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/09 09:04:56 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/11 12:13:37 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
-
-int main( void )
+#include "MutantStack.hpp"
+#include <bits/stdc++.h>
+int main(void)
 {
-	try
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
 	{
-		Array<int> out;
-
-		std::cout << out[0] << std::endl;
+		std::cout << *it << std::endl;
+		++it;
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	try
-	{
-		Array<int> out(2);
-
-		out.setElement(89, 1);
-		{
-			Array<int> in(out);
-			std::cout << in[1] << std::endl;
-		}
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}	
+	std::stack<int> s(mstack);
 	return 0;
 }

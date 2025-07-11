@@ -4,7 +4,7 @@ CC = g++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-SRC = main.cpp
+SRC = Span.cpp main.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
