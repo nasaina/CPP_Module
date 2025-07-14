@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:24:47 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/11 16:45:16 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/14 10:38:50 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <utility>
 # include <list>
 # include <sstream>
+# include <stdexcept>
 
 typedef std::list<std::pair<std::string, std::string> > list;
 
@@ -27,6 +28,7 @@ class BitcoinExchange
 		list	_element;
 	public:
 		BitcoinExchange();
+		BitcoinExchange(std::string filename);
 		list	&getElement(void) const;
 		~BitcoinExchange();
 };
@@ -45,18 +47,45 @@ BitcoinExchange::BitcoinExchange()
 
 	fs.open(filename.c_str(), std::ios::in);
 	if (!fs)
-		return ;
-
+		throw std::runtime_error("Error: could not open file.");
 	std::string line;
     while (std::getline(fs, line))
 	{
-        std::stringstream ss(line);
-        std::string firstColumn;
-        std::string secondColumn;
+        std::stringstream	ss(line);
+        std::string			first;
+        std::string			second;
 
-        if (std::getline(ss, firstColumn, ',') && std::getline(ss, secondColumn)) 
-			_element.push_back(std::make_pair(firstColumn, secondColumn));
+        if (std::getline(ss, first, ',') && std::getline(ss, second))
+			_element.push_back(std::make_pair(first, second));
     }
+	fs.close();
+}
+
+BitcoinExchange::BitcoinExchange(std::string filename)
+{
+	std::fstream	fs;
+	std::string		date;
+	std::string		value;
+
+	fs.open(filename.c_str(), std::ios::in);
+	if (!fs)
+		throw std::runtime_error("Error: could not open file.");
+	std::string line;
+    while (std::getline(fs, line))
+	{
+        std::stringstream	ss(line);
+        std::string			first;
+        std::string			second;
+
+		if (std::getline(ss, first, '|'))
+		{
+			if (std::getline(ss, second))
+				_element.push_back(std::make_pair(first, second));
+			else
+				_element.push_back(std::make_pair(first, ""));
+		}
+    }
+	fs.close();
 }
 
 BitcoinExchange::~BitcoinExchange()
