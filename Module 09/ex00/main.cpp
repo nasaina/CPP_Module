@@ -6,11 +6,51 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/14 10:59:47 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/16 14:11:14 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+bool	checkDay(int month, int day)
+{
+	if (!(month % 2) && month <= 7 && day > 30)
+		return (false);
+	else if (month % 2 && month > 7 && day > 30)
+		return (false);
+	return (true);
+}
+
+bool	checkFebruary(int year, int month, int day)
+{
+	if (month == 2)
+	{
+		if (day > 29)
+			return (false);
+		if (year % 4 != 0 && day == 29)
+			return (false);
+	}
+	else
+		return (checkDay(month, day));
+	return (true);
+}
+
+bool	checkDate(int year, int month, int day)
+{
+	if (year < 2007 || (month < 0 || month > 31) || (day < 0 || day > 31))
+		return (false);
+	if (year == 2008)
+	{
+		if (month >= 8)
+		{
+			if (day < 8)
+				return (false);
+		}
+		else
+			return (false);
+	}
+	return (true);
+}
 
 bool	dateCheck(std::string const &data)
 {
@@ -30,7 +70,10 @@ bool	dateCheck(std::string const &data)
 	if (!year.length() || !month.length())
 		return (false);
 	day = data.substr(pos + 1, data.length() - 12);
-	if (year.length() != 4)
+	int	_year = std::atoi(year.c_str());
+	int	_month = std::atoi(month.c_str());
+	int	_day = std::atoi(day.c_str());
+	if (!checkDate(_year, _month, _day) || !checkFebruary(_year, _month, _day))
 		return (false);
 	return (true);
 }

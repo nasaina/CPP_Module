@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:24:47 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/14 10:38:50 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/14 11:48:17 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <list>
 # include <sstream>
 # include <stdexcept>
+# include <cstdlib>
 
 typedef std::list<std::pair<std::string, std::string> > list;
 
