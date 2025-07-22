@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:24:47 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/22 14:10:43 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:30:16 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ BitcoinExchange::BitcoinExchange(std::string filename)
 	if (!fs)
 		throw std::runtime_error("Error: could not open file.");
 	std::string line;
+	std::getline(fs, line);
     while (std::getline(fs, line))
 	{
         std::stringstream	ss(line);
