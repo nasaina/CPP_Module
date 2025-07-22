@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/16 14:11:14 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:20:30 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 bool	checkDay(int month, int day)
 {
+	if (day <= 0 || day > 31)
+		return (false);
 	if (!(month % 2) && month <= 7 && day > 30)
 		return (false);
 	else if (month % 2 && month > 7 && day > 30)
@@ -23,6 +25,8 @@ bool	checkDay(int month, int day)
 
 bool	checkFebruary(int year, int month, int day)
 {
+	if (month <= 0 || month > 12)
+		return (false);
 	if (month == 2)
 	{
 		if (day > 29)
@@ -49,6 +53,8 @@ bool	checkDate(int year, int month, int day)
 		else
 			return (false);
 	}
+	if (month <= 0 || month > 12)
+		return (false);
 	return (true);
 }
 
@@ -69,7 +75,11 @@ bool	dateCheck(std::string const &data)
 		month = data.substr(old, pos - old);
 	if (!year.length() || !month.length())
 		return (false);
-	day = data.substr(pos + 1, data.length() - 12);
+	old = pos + 1;
+	pos = data.find(' ', old);
+	day = data.substr(old, pos - old);
+	if (year.length() != 4 || month.length() != 2 || day.length() != 2)
+		return (false);
 	int	_year = std::atoi(year.c_str());
 	int	_month = std::atoi(month.c_str());
 	int	_day = std::atoi(day.c_str());
