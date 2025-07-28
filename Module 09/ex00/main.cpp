@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/28 11:25:26 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:02:20 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,82 @@ bool getDate(std::string const &input)
 	return (verifyDate(year, month, day));
 }
 
+std::string	trim(std::string const &input)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	while (i < input.length() && isspace(input[i]))
+		i++;
+	len = input.length();
+	while (len > i && isspace(input[len]))
+		len--;
+	return (input.substr(i, len - i));
+}
+
+bool getValue(std::string const &input)
+{
+	char	*end;
+	double	value;
+
+	if (!input.length())
+	{
+		std::cout << "Error: no number entered." << std::endl;
+		return (false);
+	}
+	if (input[input.length() - 1] == '.')
+	{
+		std::cout << "Error: bad number." << std::endl;
+		return (false);
+	}
+	value = strtod(input.c_str(), &end);
+	if (*end)
+	{
+		std::cout << "Error: bad number." << std::endl;
+		return (false);
+	}
+	if (value < 0)
+	{
+		std::cout << "Error: not a positive number." << std::endl;
+		return (false);
+	}
+	if (value > 1000)
+	{
+		std::cout << "Error: too large a number." << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
+void findDate(list const &dates, std::string const &target, const std::string &value)
+{
+    std::string previous = "";
+	list::const_iterator it = dates.begin();
+	list::const_iterator out = it;
+
+
+	it++;
+    while (it != dates.end())
+	{
+		if (trim(it->first) <= target)
+		{
+			previous = trim(it->first);
+			out = it;
+		}
+		it++;
+    }
+    if (previous.length())
+	{
+		std::cout << trim(target) << " => " << trim(value) << " => ";
+		std::cout << std::atof(out->second.c_str()) * std::atof(value.c_str()) << std::endl;
+	}
+	else
+	{
+		std::cout << "Error: no date referenced." << std::endl;
+	}
+}
+
 int main(int ac, char **av)
 {
 	if (ac == 2)
@@ -60,25 +136,17 @@ int main(int ac, char **av)
 			BitcoinExchange	input((std::string)av[1]);
 			list			contain;
 			
-			std::cout << "---- data ----\n";
-			contain = data.getElement();
-			for (list::const_iterator it = contain.begin(); it != contain.end(); ++it) 
-			{
-				getDate(it->first);
-				// if (dateCheck(it->first))
-				// 	std::cout << it->first << std::endl;
-			}
-			std::cout << "\n---- input ----\n";
 			list content = input.getElement();
 			for (list::const_iterator it = content.begin(); it != content.end(); ++it) 
 			{
-				getDate(it->first);
-				// if (dateCheck(it->first))
-				// 	std::cout << it->first << " | ";
-				// if (getValue(it->second) != -1)
-				// 	std::cout << it->second << std::endl;
-				// else
-				// 	std::cout << std::endl;
+				if (!getDate(it->first))
+					std::cout << "Error: bad input => " << it->first << std::endl;
+				else
+				{
+					if (!getValue(trim(it->second)))
+						continue ;
+					findDate(data.getElement(), trim(it->first), trim(it->second));
+				}
 			}
 		}
 		catch(const std::exception& e)
