@@ -1,10 +1,10 @@
-NAME = convert
+NAME = RPN
 
 CC = g++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-SRC = Span.cpp main.cpp
+SRC = main.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 

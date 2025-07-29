@@ -6,32 +6,26 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/11 12:52:25 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:44:20 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "RPN.hpp"
 
-int main()
+int main(int argc, char const *av[])
 {
-	try
+	if (argc == 2)
 	{
-		Span sp = Span(5);
-		std::vector<int> v(3);
-
-		v[0] = 21;
-		v[1] = 12;
-		v[2] = 43;
-		sp.addNumber(10);
-		sp.addNumber(0);
-		sp.fillRange(v.begin(), v.end());
-		
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
-		return 0;
+		try
+		{
+			RPN((std::string const)av[1]);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	else
+		std::cerr << "Enter one sequence." << std::endl;
+	return (0);
 }
