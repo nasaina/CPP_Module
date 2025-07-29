@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 08:16:41 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/29 11:09:32 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:46:41 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <exception>
 # include <map>
 
+
+typedef std::map<std::string, std::string>	map;
+
 class RPN
 {
 	private:
@@ -30,6 +33,7 @@ class RPN
 		int				operation(int a, int b);
 		void			makeOperation(void);
 		int				getElement(void) const;
+		bool			checkString(std::string const &first, std::string const &second, size_t status);
 		RPN();
 		RPN(RPN const &other);
 		RPN	&operator=(RPN const &other);
@@ -38,49 +42,63 @@ class RPN
 		~RPN();
 };
 
+bool	RPN::checkString(std::string const &first, std::string const &second, size_t status)
+{
+	int countDigit;
+	int countOp;
+
+	countDigit = 0;
+	countOp = 0;
+	for (size_t i = 0; i < first.length(); i++)
+	{
+		if (std::isdigit(first[i]))
+			countDigit++;
+		if (!std::isdigit(first[i]) && !isspace(first[i]))
+			return (false);
+	}
+	for (size_t i = 0; i < second.length(); i++)
+	{
+		if (std::strchr("+-*/", second[i]))
+			countOp++;
+		if (!std::strchr("+-*/", second[i]) && !isspace(second[i]))
+			return (false);
+	}
+	if (countDigit != countOp + 1 && !status)
+		return (false);
+	return (true);
+}
+
 bool	RPN::checkArgs(std::string const &av)
 {
-	// int 	count;
-	std::map<std::string, std::string>	tmp;
+	map	tmp;
 	size_t	i;
 	size_t	j;
-	// size_t	last;
+	size_t	last;
+	size_t	status;
 
-	// count = 0;
 	i = 0;
 	j = 0;
-	// while (i < av.length() && j < av.length())
-	// {
-	while (!std::strchr("+*/-", av[i]))
-		i++;
-	// last = i;
-	j = i + 1;
-	while (std::strchr("+-*/", av[j]) || isspace(av[j]))
-		j++;
-	tmp.insert(std::pair<std::string, std::string>(av.substr(0, i), av.substr(j, j - i)));
-	std::cout << tmp.begin()->first << "endl " << tmp.begin()->second << std::endl;
-		
-	// }
-	
-	
-	// while (count < 3)
-	// {
-	// 	while (isspace(av[i]))
-	// 		i++;
-	// 	if (!isdigit(av[i]))
-	// 		return (false);
-	// 	count++;
-	// }
-	// for (i = i; i < av.length(); i++)
-	// {
-	// 	while (isspace(av[i]))
-	// 		i++;
-	// 	count++;
-	// 	if (count % 2 && !isdigit(av[i]))
-	// 		return (false);
-	// 	else if (!count % 2 && std::strchr("+-*/", av[i]))
-	// 		return (false);
-	// }
+	last = 0;
+	status = 0;
+	if (!av.length())
+		return (false);
+	while (i < av.length())
+	{
+		i = j;
+		while (!std::strchr("+*/-", av[i]) && i < av.length())
+			i++;
+		j = i;
+		while ((std::strchr("+-*/", av[j]) || isspace(av[j])) && j < av.length())
+			j++;
+		tmp.insert(std::pair<std::string, std::string>(av.substr(last, i - last), av.substr(i, j - i)));
+		last = j;
+		std::string first = tmp.begin()->first;
+		std::string second = tmp.begin()->second;
+		if (!checkString(first, second, status))
+			return (false);
+		status++;
+		tmp.clear();
+	}
 	return (true);
 }
 
@@ -100,7 +118,11 @@ int	RPN::operation(int a, int b)
 	else if (_operators == "*")
 		return (a * b);
 	else if (_operators == "/")
+	{
+		if (b == 0)
+			throw std::runtime_error("Error");
 		return (a / b);
+	}
 	throw	std::runtime_error("Error");
 	return (-1);
 }
@@ -125,35 +147,42 @@ void	RPN::makeOperation()
 void	RPN::insertElement(std::string const &av)
 {
 	size_t	i;
+	int		count;
 	std::stack<std::string>	tmp;
 
 	i = 0;
-	while (isspace(av[i]))
-		i++;
-	tmp.push(av.substr(i, 1));
-	_element.push(std::atoi(tmp.top().c_str()));
-	tmp.pop();
-	i++;
+	count = 0;
 	while (i < av.length())
 	{
-		while (isspace(av[i]))
+		while ((isspace(av[i]) || std::isdigit(av[i])) && i < av.length())
+		{
+			while (isspace(av[i]))
+				i++;
+			if (std::isdigit(av[i]))
+			{
+				tmp.push(av.substr(i, 1));
+				_element.push(std::atoi(tmp.top().c_str()));
+				tmp.pop();
+				count++;
+			}
+			if (!std::isdigit(av[i]))
+				break ;
 			i++;
-		tmp.push(av.substr(i, 1));
-		_element.push(std::atoi(tmp.top().c_str()));
-		tmp.pop();
-		i++;
-		while (isspace(av[i]))
+		}
+		while (isspace(av[i]) && i < av.length())
 			i++;
-		tmp.push(av.substr(i, 1));
-		_operators = tmp.top();
-		tmp.pop();
-		makeOperation();
+		_operators = av.substr(i, 1);
+		if (_element.size() >= 2 && _operators[0])
+			makeOperation();
+		if (count <= 1)
+			throw std::runtime_error("Error");
 		i++;
 	}
 }
 
 RPN::RPN(std::string const &av)
 {
+	_operators = "";
 	if (checkArgs(av))
 	{
 		insertElement(av);
