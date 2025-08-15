@@ -1,6 +1,6 @@
 NAME = btc
 
-CC = g++
+CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 

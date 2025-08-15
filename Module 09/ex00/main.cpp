@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/29 08:16:00 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/08/15 08:31:46 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,38 @@ void findDate(list const &dates, std::string const &target, const std::string &v
 		std::cout << std::atof(out->second.c_str()) * std::atof(value.c_str()) << std::endl;
 	}
 	else
-	{
 		std::cout << "Error: no date referenced." << std::endl;
+}
+
+void	checkHeader(BitcoinExchange &data, BitcoinExchange &input)
+{
+	list content;
+
+	content = input.getElement();
+	if (trim(content.begin()->first) != "date" && trim(content.begin()->second) != "value")
+		throw std::runtime_error("Error : head of your input file should be \"date | value\"");
+	list dataElement = data.getElement();
+	if (trim(dataElement.begin()->first) != "date" && trim(dataElement.begin()->second) != "exchange_rate")
+		throw std::runtime_error("Error : head of your data file should be \"date,exchange_rate\"");
+}
+
+void	bitcoin(char **av)
+{
+	BitcoinExchange	data;
+	BitcoinExchange	input((std::string)av[1]);
+
+	list content = input.getElement();
+	checkHeader(data, input);
+	for (list::const_iterator it = content.begin(); it != content.end(); ++it) 
+	{
+		if (!getDate(it->first))
+			std::cout << "Error: bad input => " << it->first << std::endl;
+		else
+		{
+			if (!getValue(trim(it->second)))
+				continue ;
+			findDate(data.getElement(), trim(it->first), trim(it->second));
+		}
 	}
 }
 
@@ -132,22 +162,7 @@ int main(int ac, char **av)
 	{
 		try
 		{
-			BitcoinExchange	data;
-			BitcoinExchange	input((std::string)av[1]);
-			list			contain;
-			
-			list content = input.getElement();
-			for (list::const_iterator it = content.begin(); it != content.end(); ++it) 
-			{
-				if (!getDate(it->first))
-					std::cout << "Error: bad input => " << it->first << std::endl;
-				else
-				{
-					if (!getValue(trim(it->second)))
-						continue ;
-					findDate(data.getElement(), trim(it->first), trim(it->second));
-				}
-			}
+			bitcoin(av);
 		}
 		catch(const std::exception& e)
 		{
@@ -159,5 +174,5 @@ int main(int ac, char **av)
 		std::cout << "Error: could not open file." << std::endl;
 		return (1);
 	}
-	return 0;
+	return (0);
 }
