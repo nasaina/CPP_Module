@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 16:36:04 by nandrian          #+#    #+#             */
-/*   Updated: 2025/06/24 16:39:48 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 09:50:39 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Form::Form() : _name("Default"), _status(false), _sign(150), _exec(150)
 {
 }
 
-Form::Form(const Form &other) : _name(other.getName()), _status(other.getStatus()), _sign(other.getStatus()), _exec(other.getExec())
+Form::Form(const Form &other) : _name(other.getName()), _status(other.getStatus()), _sign(other.getSign()), _exec(other.getExec())
 {
 }
 

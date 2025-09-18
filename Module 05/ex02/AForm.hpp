@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:39:22 by nandrian          #+#    #+#             */
-/*   Updated: 2025/06/27 12:22:02 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 09:57:47 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ class AForm
 		int					getSign(void) const;
 		int					getExec(void) const;
 		virtual void		execute(Bureaucrat const &executor) const = 0;
-		~AForm();
+		virtual ~AForm();
 };
+
 
 std::ostream	&operator<<(std::ostream &os, const AForm &other);
 

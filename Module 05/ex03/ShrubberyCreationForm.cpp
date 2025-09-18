@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 16:45:45 by nandrian          #+#    #+#             */
-/*   Updated: 2025/07/04 13:50:23 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:16:43 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &other) const
 	std::ofstream	file;
 
 	name = this->getTarget() + "_shrubbery";
-	file.open(name.c_str(), std::ios::out | std::ios::trunc);
 	grade = other.getGrade();
 	if (this->getStatus())
 	{
+		file.open(name.c_str(), std::ios::out | std::ios::trunc);
 		if (grade < this->getSign() && grade < this->getExec())
 		{
 			if (file.is_open())
