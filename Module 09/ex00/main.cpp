@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:17:25 by nandrian          #+#    #+#             */
-/*   Updated: 2025/08/15 08:41:12 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:39:33 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,17 +162,21 @@ int main(int ac, char **av)
 	{
 		try
 		{
+			std::cout << "Starting Bitcoin Exchange test..." << std::endl;
 			bitcoin(av);
+			std::cout << "Test completed successfully!" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << "Test failed: " << e.what() << std::endl;
+			return (1);
 		}
 	}
 	else
 	{
-		std::cout << "Error: could not open file." << std::endl;
+		std::cout << "Test failed: Usage: ./btc [input_file]" << std::endl;
 		return (1);
 	}
+	std::cout << "All tests passed!" << std::endl;
 	return (0);
 }
