@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:36:55 by nandrian          #+#    #+#             */
-/*   Updated: 2025/06/27 11:14:10 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:21:49 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other.getName()), _grade
 void	Bureaucrat::executeForm(AForm const & form) const
 {
 		form.execute(*this);
-		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		std::cout << this->getName() << " executed " << form.getName() << "." << std::endl;
 }
 
 void	Bureaucrat::signForm(AForm &other)
@@ -39,11 +39,11 @@ void	Bureaucrat::signForm(AForm &other)
 	try
 	{
 		other.beSigned(*this);
-		std::cout << this->getName() << " signed " << other.getName() << std::endl;
+		std::cout << this->getName() << " signed " << other.getName() << "." << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << this->getName() << " couldn't sign " << other.getName() << " because " << e.what() << std::endl;
+		std::cerr << this->getName() << " couldn't sign " << other.getName() << " because " << e.what() << "." << std::endl;
 	}
 }
 

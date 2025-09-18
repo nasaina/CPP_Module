@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 15:34:33 by nandrian          #+#    #+#             */
-/*   Updated: 2025/09/18 10:09:46 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:21:49 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ AForm	*Intern::makeForm(std::string name, std::string target)
 	{
 		case 0:
 		{
-			std::cout << "Intern creates " << type[0].name << " Form" << std::endl;
+			   std::cout << "Intern creates " << type[0].name << " form." << std::endl;
 			return (new PresidentialPardonForm(target));
 		}
 		case 1:
 		{
-			std::cout << "Intern creates " << type[1].name << " Form" << std::endl;
+			   std::cout << "Intern creates " << type[1].name << " form." << std::endl;
 			return (new RobotomyRequestForm(target));
 		}
 		case 2:
 		{
-			std::cout << "Intern creates " << type[2].name << " Form" << std::endl;
+			   std::cout << "Intern creates " << type[2].name << " form." << std::endl;
 			return (new ShrubberyCreationForm(target));
 		}
 		default:

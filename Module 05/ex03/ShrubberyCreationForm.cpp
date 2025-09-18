@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 16:45:45 by nandrian          #+#    #+#             */
-/*   Updated: 2025/09/18 10:16:43 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:21:50 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &other) const
 			}
 			else
 			{
-				std::cerr << "Failed to open file" << std::endl;
+				   std::cerr << "Failed to open file." << std::endl;
 				return ;
 			}
 		}

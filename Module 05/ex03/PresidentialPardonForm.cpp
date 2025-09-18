@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 17:26:56 by nandrian          #+#    #+#             */
-/*   Updated: 2025/06/27 11:16:28 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:21:50 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const &other) const
 	if (this->getStatus() )
 	{
 		if (grade < this->getSign() && grade < this->getExec())
-			std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+					   std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 		else
 			throw GradeTooLowException();
 	}

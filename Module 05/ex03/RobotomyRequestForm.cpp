@@ -36,11 +36,11 @@ void	RobotomyRequestForm::execute(Bureaucrat const &other) const
 		if (grade < this->getSign() && grade < this->getExec())
 		{
 			random = rand() % 2;
-			std::cout << "jzzzzzzzzz" << std::endl;
+			   std::cout << "* drilling noises *" << std::endl;
 			if (random != 0)
-				std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
+							   std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
 			else
-				std::cout << "The robotomy failed." << std::endl;
+							   std::cout << "Robotomy failed." << std::endl;
 		}
 		else
 			throw GradeTooLowException();

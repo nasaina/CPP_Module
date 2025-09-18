@@ -6,7 +6,7 @@
 /*   By: nandrian <nandrian@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:37:20 by nandrian          #+#    #+#             */
-/*   Updated: 2025/09/18 10:06:16 by nandrian         ###   ########.fr       */
+/*   Updated: 2025/09/18 10:21:47 by nandrian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void)
 {
 	srand(static_cast<unsigned int>(time(NULL)));
 
-	// Test Intern form creation (valid and invalid)
+	// ...existing code...
 	try {
 		Intern intern;
 		AForm* form1 = intern.makeForm("shrubbery creation", "Garden");
@@ -42,7 +42,7 @@ int main(void)
 	}
 	newLine();
 
-	// Test Intern with an unknown form name
+	// ...existing code...
 	try {
 		Intern intern;
 		AForm* form = intern.makeForm("unknown form", "Nobody");
@@ -52,7 +52,7 @@ int main(void)
 	}
 	newLine();
 
-	// Test Bureaucrat signing and executing all forms
+	// ...existing code...
 	try {
 		Bureaucrat boss("Boss", 1);
 		ShrubberyCreationForm shrub("Home");
@@ -75,28 +75,28 @@ int main(void)
 	}
 	newLine();
 
-	// Test execution without signature
+	// ...existing code...
 	try {
 		Bureaucrat exec("Exec", 1);
 		RobotomyRequestForm robot("Target");
-		exec.executeForm(robot); // Should throw because not signed
+		exec.executeForm(robot);
 	} catch(const std::exception& e) {
 		std::cerr << "Expected error (not signed): " << e.what() << std::endl;
 	}
 	newLine();
 
-	// Test signing/executing with insufficient grade
+	// ...existing code...
 	try {
 		Bureaucrat low("LowRank", 150);
 		ShrubberyCreationForm shrub("Forest");
-		low.signForm(shrub); // Should fail
-		low.executeForm(shrub); // Should fail
+		low.signForm(shrub);
+		low.executeForm(shrub);
 	} catch(const std::exception& e) {
 		std::cerr << "Expected error (grade too low): " << e.what() << std::endl;
 	}
 	newLine();
 
-	// Test polymorphism with AForm*
+	// ...existing code...
 	try {
 		Bureaucrat poly("Poly", 1);
 		AForm* forms[3];
